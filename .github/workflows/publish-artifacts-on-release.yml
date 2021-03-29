@@ -1,0 +1,42 @@
+name: Publish artifacts (Linux, Windows) on release
+
+on:
+  push:
+    tags:
+      - 'v*'
+
+jobs:
+
+  linux:
+    name: "Publish linux artifacts to release"
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2       
+    - uses: actions/setup-node@master
+      with:
+        node-version: 14
+    - name: Install dependencies
+      run: make install
+    - name: Build application
+      run: make compile
+    - name: Publish
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      run: make publish
+
+  windows:
+    name: "Publish windows artifacts to release"
+    runs-on: windows-latest
+    steps:
+    - uses: actions/checkout@v2       
+    - uses: actions/setup-node@master
+      with:
+        node-version: 14
+    - name: Install dependencies
+      run: make install
+    - name: Build application
+      run: make compile
+    - name: Publish
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      run: make publish

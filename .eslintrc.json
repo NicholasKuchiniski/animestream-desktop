@@ -1,0 +1,108 @@
+{
+    "env": {
+        "browser": true,
+        "es6": true
+    },
+    "extends": [
+        "plugin:react/recommended",
+        "airbnb",
+        "plugin:@typescript-eslint/recommended",
+        "react-app",
+        "plugin:prettier/recommended"
+    ],
+    "globals": {
+        "Atomics": "readonly",
+        "SharedArrayBuffer": "readonly"
+    },
+    "parser": "@typescript-eslint/parser",
+    "parserOptions": {
+        "ecmaFeatures": {
+            "jsx": true
+        },
+        "ecmaVersion": 2018,
+        "sourceType": "module",
+        "project": "./tsconfig.json",
+        "tsconfigRootDir": "./"
+    },
+    "plugins": [
+        "react",
+        "@typescript-eslint",
+        "import"
+    ],
+    "rules": {
+        "no-param-reassign": "off",
+        "jsx-a11y/media-has-caption": "off",
+        "@typescript-eslint/no-unused-vars": "error",
+        "react/destructuring-assignment": "off",
+        "react/jsx-props-no-spreading": "off",
+        "import/no-default-export": "error",
+        "react/require-default-props": "off",
+        "react-hooks/exhaustive-deps": "off",
+        "class-methods-use-this": "off",
+        "no-useless-constructor": "off",
+        "max-len": "off",
+        "@typescript-eslint/explicit-function-return-type": "off",
+        "react/jsx-filename-extension": [
+            1,
+            {
+                "extensions": [
+                    ".js",
+                    ".jsx",
+                    ".ts",
+                    ".tsx"
+                ]
+            }
+        ],
+        "import/extensions": [
+            "error",
+            "ignorePackages",
+            {
+                "js": "never",
+                "jsx": "never",
+                "ts": "never",
+                "tsx": "never"
+            }
+        ],
+        "import/prefer-default-export": "off",
+        "@typescript-eslint/no-explicit-any": "off",
+        "react/no-array-index-key": "off",
+        "no-restricted-imports": [
+            "error",
+            {
+                "patterns": [
+                    "./*",
+                    "../*"
+                ]
+            }
+        ],
+        "import/order": [
+            "error",
+            {
+                "pathGroups": [
+                    {
+                        "pattern": "#/**",
+                        "group": "internal"
+                    }
+                ],
+                "groups": [
+                    "builtin",
+                    "external",
+                    "internal",
+                    "parent",
+                    "sibling",
+                    "index"
+                ],
+                "newlines-between": "always",
+                "alphabetize": {
+                    "order": "asc",
+                    "caseInsensitive": true
+                }
+            }
+        ]
+    },
+    "settings": {
+        "import/resolver": {
+            "typescript": {}
+        }
+    }
+}
