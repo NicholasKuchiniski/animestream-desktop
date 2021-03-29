@@ -1,6 +1,6 @@
 import axios, { AxiosInstance, AxiosRequestConfig } from "axios";
 
-import { Authorization } from "#/authorization/entities/authorization";
+import { Authorization } from "#/core/entities/authorization";
 import { HttpClientError } from "#/core/http-client/http-client-error";
 import { HttpClientLogger } from "#/core/http-client/http-client-logger-middleware";
 import { HttpClientMiddleware } from "#/core/http-client/http-client-middleware";

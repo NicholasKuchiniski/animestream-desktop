@@ -1,4 +1,4 @@
-import { SeriesCollection } from "#/core/collections/series-collection";
+import { SeriesCollection } from "#/core/entities/collections/series-collection";
 import { Serie } from "#/core/entities/serie";
 import { HttpClient } from "#/core/http-client/http-client";
 

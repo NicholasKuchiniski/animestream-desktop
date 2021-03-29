@@ -1,4 +1,4 @@
-import { EpisodesCollection } from "#/core/collections/episodes-collection";
+import { EpisodesCollection } from "#/core/entities/collections/episodes-collection";
 import { Episode } from "#/core/entities/episode";
 import { HttpClient } from "#/core/http-client/http-client";
 

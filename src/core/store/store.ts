@@ -6,19 +6,19 @@ import { PersistPartial } from "redux-persist/es/persistReducer";
 import storage from "redux-persist/lib/storage";
 import createSagaMiddleware from "redux-saga";
 
-import { applicationReducer } from "#/application/store/reducers";
-import { authorizationReducer } from "#/authorization/store/reducers";
-import { commentsReducer } from "#/comments/store/reducers";
+import { applicationReducer } from "#/core/application/store/reducers";
 import { rootSaga } from "#/core/store/root-saga";
-import { createAccountPasswordReducer } from "#/create-account-password/store/reducers";
-import { episodeReducer } from "#/episode/store/reducers";
-import { homeReducer } from "#/home/store/reducers";
-import { newEpisodeReducer } from "#/new-episode/store/reducers";
-import { newSerieReducer } from "#/new-serie/store/reducers";
+import { themeReducer } from "#/core/themes/store/reducers";
+import { commentsReducer } from "#/episodes/comments/store/reducers";
+import { episodeReducer } from "#/episodes/episode/store/reducers";
+import { newEpisodeReducer } from "#/episodes/new-episode/store/reducers";
 import { reactotron } from "#/reactotron-config";
-import { searchReducer } from "#/search/store/reducers";
-import { serieReducer } from "#/serie/store/reducers";
-import { themeReducer } from "#/themes/store/reducers";
+import { homeReducer } from "#/series/home/store/reducers";
+import { newSerieReducer } from "#/series/new-serie/store/reducers";
+import { searchReducer } from "#/series/search/store/reducers";
+import { serieReducer } from "#/series/serie/store/reducers";
+import { authorizationReducer } from "#/users/authorization/store/reducers";
+import { createAccountPasswordReducer } from "#/users/create-account-password/store/reducers";
 
 const persistConfig: PersistConfig<any> = {
   key: "animestream-v1",
