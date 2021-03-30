@@ -8,10 +8,19 @@ import { NewEpisodeState, NewEpisodeActions, NewEpisodeActionTypes } from "#/epi
 
 export const INITIAL_STATE: NewEpisodeState = {
   isLoading: false,
+  isLoadingSeries: false,
   series: SeriesCollection.empty(),
   episode: Episode.empty(),
+  newEpisode: {
+    name: "",
+    description: "",
+    duration: 0,
+    number: 0,
+    image: "",
+    quality: 0,
+    serieId: "",
+  },
   video: {
-    isLoading: false,
     progress: 0,
     video: File.empty(),
   },
@@ -24,23 +33,24 @@ export const newEpisodeReducer: Reducer<NewEpisodeState, NewEpisodeActions> = (
   produce(state, (draft) => {
     switch (action.type) {
       case NewEpisodeActionTypes.SEARCH_SERIES_REQUEST: {
-        draft.isLoading = true;
+        draft.isLoadingSeries = true;
         draft.series = SeriesCollection.empty();
         break;
       }
       case NewEpisodeActionTypes.SEARCH_SERIES_SUCCESS: {
-        draft.isLoading = false;
+        draft.isLoadingSeries = false;
         draft.series = action.payload.series;
         break;
       }
       case NewEpisodeActionTypes.SEARCH_SERIES_FAILURE: {
-        draft.isLoading = false;
+        draft.isLoadingSeries = false;
         draft.series = SeriesCollection.empty();
         break;
       }
       case NewEpisodeActionTypes.UPLOAD_VIDEO_REQUEST: {
+        draft.isLoading = true;
+        draft.newEpisode = action.payload.newEpisode;
         draft.video = {
-          isLoading: true,
           progress: 0,
           video: File.empty(),
         };
@@ -48,7 +58,6 @@ export const newEpisodeReducer: Reducer<NewEpisodeState, NewEpisodeActions> = (
       }
       case NewEpisodeActionTypes.UPLOAD_VIDEO_PROGRESS: {
         draft.video = {
-          isLoading: true,
           progress: action.payload.progress,
           video: File.empty(),
         };
@@ -56,22 +65,20 @@ export const newEpisodeReducer: Reducer<NewEpisodeState, NewEpisodeActions> = (
       }
       case NewEpisodeActionTypes.UPLOAD_VIDEO_SUCCESS: {
         draft.video = {
-          isLoading: false,
           progress: draft.video.progress,
           video: action.payload.file,
         };
         break;
       }
       case NewEpisodeActionTypes.UPLOAD_VIDEO_FAILURE: {
+        draft.isLoading = false;
         draft.video = {
-          isLoading: false,
           progress: 0,
           video: File.empty(),
         };
         break;
       }
       case NewEpisodeActionTypes.NEW_EPISODE_REQUEST: {
-        draft.isLoading = true;
         draft.episode = Episode.empty();
         break;
       }

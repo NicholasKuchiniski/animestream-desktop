@@ -31,19 +31,17 @@ export function NewEpisodeModal({
   isValid,
   isOpen,
   isLoading,
-  isVideoLoading,
   onClose,
   values,
   errors,
   series,
-  videoProgress,
   onChange,
   onSearch,
   onUpload,
   onSubmit,
 }: NewEpisodeModalProps) {
-  const isCloseDisabled = isLoading || isVideoLoading;
-  const isSubmitDisabled = !isValid || isLoading || isVideoLoading;
+  const isCloseDisabled = isLoading;
+  const isSubmitDisabled = !isValid || isLoading;
 
   function internalOnSearch(event: ChangeEvent<HTMLInputElement>) {
     event.target.value = capitalize(event.target.value);
@@ -148,12 +146,7 @@ export function NewEpisodeModal({
               <HelperText isError={!!errors.number}>{errors.number ?? "The number of the episode."}</HelperText>
             </FormControl>
             <FormControl>
-              <VideoUpload
-                isLoading={isVideoLoading}
-                placeholder="Upload"
-                onChange={onUpload}
-                progress={videoProgress}
-              />
+              <VideoUpload placeholder="Upload" onChange={onUpload} />
               <HelperText>A description of the content of the episode.</HelperText>
             </FormControl>
           </Stack>

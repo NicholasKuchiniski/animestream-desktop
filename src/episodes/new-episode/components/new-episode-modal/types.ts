@@ -11,15 +11,14 @@ export interface NewEpisodeFormSchema {
   number: number;
   image: string;
   quality: number;
+  video: File;
 }
 
 export interface NewEpisodeModalProps {
   isValid: boolean;
   isOpen: boolean;
   isLoading: boolean;
-  isVideoLoading: boolean;
   series: SeriesCollection;
-  videoProgress: number;
   values: NewEpisodeFormSchema;
   errors: FormikErrors<NewEpisodeFormSchema>;
   onChange: FormikProps<NewEpisodeFormSchema>["handleChange"];

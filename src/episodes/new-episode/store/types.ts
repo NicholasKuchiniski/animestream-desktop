@@ -17,6 +17,16 @@ export enum NewEpisodeActionTypes {
   NEW_EPISODE_FAILURE = "@episodes/NEW_EPISODE_FAILURE",
 }
 
+export type NewEpisode = {
+  name: string;
+  description: string;
+  duration: number;
+  number: number;
+  image: string;
+  quality: number;
+  serieId: string;
+};
+
 export type SearchSeriesAction = PayloadAction<
   NewEpisodeActionTypes.SEARCH_SERIES_REQUEST,
   {
@@ -37,6 +47,7 @@ export type UploadVideoAction = PayloadAction<
   NewEpisodeActionTypes.UPLOAD_VIDEO_REQUEST,
   {
     file: File;
+    newEpisode: NewEpisode;
   }
 >;
 
@@ -56,18 +67,7 @@ export type UploadVideoSuccessAction = PayloadAction<
 
 export type UploadVideoFailureAction = Action<NewEpisodeActionTypes.UPLOAD_VIDEO_FAILURE>;
 
-export type NewEpisodeAction = PayloadAction<
-  NewEpisodeActionTypes.NEW_EPISODE_REQUEST,
-  {
-    name: string;
-    description: string;
-    duration: number;
-    number: number;
-    image: string;
-    quality: number;
-    serieId: string;
-  }
->;
+export type NewEpisodeAction = Action<NewEpisodeActionTypes.NEW_EPISODE_REQUEST>;
 
 export type NewEpisodeSuccessAction = PayloadAction<
   NewEpisodeActionTypes.NEW_EPISODE_SUCCESS,
@@ -92,10 +92,11 @@ export type NewEpisodeActions =
 
 export interface NewEpisodeState {
   isLoading: boolean;
+  isLoadingSeries: boolean;
   series: SeriesCollection;
   episode: Episode;
+  newEpisode: NewEpisode;
   video: {
-    isLoading: boolean;
     progress: number;
     video: FileEntity;
   };

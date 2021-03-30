@@ -6,8 +6,8 @@ export interface VideoUploadChangeEvent {
 }
 
 export interface VideoUploadProps {
-  isLoading: boolean;
-  progress: number;
+  isLoading?: boolean;
+  progress?: number;
   placeholder: string;
   onChange: (event: VideoUploadChangeEvent) => void;
 }

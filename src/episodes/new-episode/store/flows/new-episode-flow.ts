@@ -9,24 +9,26 @@ import { EpisodesService } from "#/core/services/episodes-service";
 import { FilesService } from "#/core/services/files-service";
 import { ApplicationState } from "#/core/store/store";
 import { newEpisodeSuccessAction, newEpisodeFailureAction } from "#/episodes/new-episode/store/actions";
-import { NewEpisodeAction, NewEpisodeActionTypes } from "#/episodes/new-episode/store/types";
+import { NewEpisode, NewEpisodeActionTypes } from "#/episodes/new-episode/store/types";
 
 export function* newEpisodeFlow() {
   while (true) {
-    const action: NewEpisodeAction = yield take(NewEpisodeActionTypes.NEW_EPISODE_REQUEST);
+    yield take(NewEpisodeActionTypes.NEW_EPISODE_REQUEST);
 
     try {
       yield put(setApplicationError({ error: HttpClientError.empty() }));
 
+      const newEpisode: NewEpisode = yield select((state: ApplicationState) => state.newEpisode.newEpisode);
+
       let image: File = yield call(FilesService.create, FileExtensions.PNG, FileFolders.IMAGES);
 
-      image = yield call(FilesService.upload, image, action.payload.image);
+      image = yield call(FilesService.upload, image, newEpisode.image);
 
       const video: File = yield select((state: ApplicationState) => state.newEpisode.video.video);
 
       const episode: Episode = yield call(EpisodesService.create, {
-        ...action.payload,
-        duration: Math.ceil(action.payload.duration),
+        ...newEpisode,
+        duration: Math.ceil(newEpisode.duration),
         image: image.getUrl(),
         link: video.getUrl(),
       });

@@ -6,7 +6,7 @@ import React, { ChangeEvent, useRef, useState } from "react";
 import { VideoUploadProps } from "#/core/components/video-upload/types";
 import { videoToFile } from "#/core/utils/video-to-file";
 
-export function VideoUpload({ placeholder, isLoading, progress, onChange }: VideoUploadProps) {
+export function VideoUpload({ placeholder, isLoading = false, progress = 0, onChange }: VideoUploadProps) {
   const [fileObjectURL, setFileObjectURL] = useState<string>("");
   const [fileName, setFileName] = useState<string>("");
 

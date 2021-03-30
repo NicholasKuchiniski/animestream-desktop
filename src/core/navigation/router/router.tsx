@@ -6,6 +6,7 @@ import { ProtectedRoute } from "#/core/navigation/router/protected-route";
 import { AppearanceModalContainer as AppearanceModal } from "#/core/themes/components/appearance-modal/appearance-modal.container";
 import { EpisodeRoute } from "#/episodes/episode/routes/episode/episode.container";
 import { NewEpisodeModalContainer as NewEpisodeModal } from "#/episodes/new-episode/components/new-episode-modal/new-episode-modal.container";
+import { NewEpisodeBottomSheetContainer as NewEpisodeBottomSheet } from "#/episodes/new-episode/components/new-episode-progress-bottom-sheet/new-episode-progress-bottom-sheet.container";
 import { HomeRoute } from "#/series/home/routes/home/home.container";
 import { NewSerieModalContainer as NewSerieModal } from "#/series/new-serie/components/new-serie-modal/new-serie-modal.container";
 import { SearchRoute } from "#/series/search/routes/search/search.container";
@@ -26,6 +27,7 @@ export function Router({ history }: RouterProps) {
       </Switch>
       <NewSerieModal />
       <NewEpisodeModal />
+      <NewEpisodeBottomSheet />
       <AppearanceModal />
       <CreateAccountPasswordModal />
     </ConnectedRouter>

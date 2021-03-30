@@ -1,6 +1,5 @@
 import { simpleAction } from "#/core/store/action";
 import {
-  NewEpisodeAction,
   NewEpisodeActionTypes,
   NewEpisodeSuccessAction,
   SearchSeriesAction,
@@ -29,7 +28,7 @@ export const uploadVideoSuccessAction = simpleAction<UploadVideoSuccessAction["p
   NewEpisodeActionTypes.UPLOAD_VIDEO_SUCCESS,
 );
 export const uploadVideoFailureAction = simpleAction(NewEpisodeActionTypes.UPLOAD_VIDEO_FAILURE);
-export const newEpisodeAction = simpleAction<NewEpisodeAction["payload"]>(NewEpisodeActionTypes.NEW_EPISODE_REQUEST);
+export const newEpisodeAction = simpleAction(NewEpisodeActionTypes.NEW_EPISODE_REQUEST);
 export const newEpisodeSuccessAction = simpleAction<NewEpisodeSuccessAction["payload"]>(
   NewEpisodeActionTypes.NEW_EPISODE_SUCCESS,
 );
