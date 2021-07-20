@@ -4,7 +4,7 @@
 const path = require("path");
 const url = require("url");
 
-const { app, BrowserWindow, globalShortcut, protocol } = require("electron");
+const { app, BrowserWindow, globalShortcut } = require("electron");
 
 app.commandLine.appendSwitch("enable-transparent-visuals");
 app.commandLine.appendSwitch("disable-gpu");
@@ -14,17 +14,17 @@ const port = parseInt(process.env.PORT, 10) || 3000;
 function createWindow() {
   // Create the browser window.
   const mainWindow = new BrowserWindow({
-    width: 1750,
-    height: 950,
+    width: 1440,
+    height: 720,
     webPreferences: {
       devTools: true,
       nodeIntegration: true,
     },
     icon: path.join(`${__dirname}/core/assets/animestream.png`),
-    maximizable: false,
+    maximizable: true,
     resizable: true,
-    transparent: true,
-    frame: false,
+    transparent: false,
+    frame: true,
   });
 
   // Config
@@ -81,6 +81,5 @@ app.on("window-all-closed", () => {
 
 // In this file you can include the rest of your app's specific main process
 // code. You can also put them in separate files and require them here.
-
 
 app.setAsDefaultProtocolClient("animestream");
